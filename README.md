@@ -7,7 +7,7 @@ Code accompanying our paper [ReCCoVER: Detecting Causal Confusion for Explainabl
 
 Necessary packages can be installed directly from the requirements.txt file:
 
-```{bash}
+```{shell}
 pip install -r requirements.txt
 ```
 
@@ -18,12 +18,12 @@ ReCCoVER has been evaluated in two environments: [OpenAI taxi environment](https
 
 To train and evaluate ReCCoVER in the taxi environment:
 
-```{bash}
+```{shell}
 python main.py --task taxi --train
 ```
 
 To train and evaluate ReCCoVER in the minigrid traffic environment:
 
-```{bash}
+```{shell}
 python main.py --task traffic --train
 ```
