@@ -3,7 +3,7 @@
 
 Code accompanying our paper [ReCCoVER: Detecting Causal Confusion for Explainable RL](https://arxiv.org/abs/2203.11211).
 
-### Installation 
+## Installation 
 
 Necessary packages are listed in the requirements file: 
 
@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ```
 
 
-### Running the code
+## Running the code
 
 ReCCoVER has been evaluated in two environments: [OpenAI taxi environment](https://www.gymlibrary.ml/environments/toy_text/taxi/) and [Minigrid traffic environment](https://github.com/maximecb/gym-minigrid). 
 
