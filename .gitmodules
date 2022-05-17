@@ -1,0 +1,6 @@
+[submodule "gym-minigrid"]
+	path = gym-minigrid
+	url = git@github.com:maximecb/gym-minigrid.git
+[submodule "gym_minigrid"]
+	path = gym_minigrid
+	url = git@github.com:maximecb/gym-minigrid.git

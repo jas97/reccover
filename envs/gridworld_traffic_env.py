@@ -1,4 +1,3 @@
-import random
 from gym_minigrid.minigrid import *
 from enum import IntEnum
 

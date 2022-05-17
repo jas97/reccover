@@ -22,7 +22,6 @@ def main(task, train):
     # Read settings file
     with open(params_file, 'r') as f:
         params = json.loads(f.read())
-        print(params)
 
     if task == 'taxi':
         env = TaxiEnv(max_timesteps=200)
@@ -39,22 +38,29 @@ def main(task, train):
     results_graph_policy = 'results/{}/results.csv'.format(task)
 
     # Initialize policies
-    masks =  torch.from_numpy(np.array(params['masks']))
+    masks = torch.from_numpy(np.array(params['masks']))
     policy_confused = DQNAgent(env.state_dim, params['hidden_size'], env.num_actions, env.state_dim, device)
     policy_correct = DQNAgent(env.state_dim, params['hidden_size'], env.num_actions, env.state_dim, device)
     graph_policy = DQNAgentParametrized(2 * env.state_dim, 512, env.num_actions, env.state_dim, device, masks)
 
     if train:
+        print('Training confused policy...')
         env.set_confused(True)
         policy_confused.train_dqn(env, conf_policy_path, num_episodes=3000)
+        print('Finished!')
         env.set_confused(False)
+        print('Training correct policy...')
         policy_correct.train_dqn(env, true_policy_path, num_episodes=3000)
+        print('Finished!')
         env.set_confused(None)
+        print('Training feature-parametrized policy...')
         graph_policy.train_dqn(env, graph_policy_path, eval_path=results_graph_policy)
+        print('Finished!')
     else:
         policy_confused.load(from_cuda=True, path=conf_policy_path)
         policy_correct.load(from_cuda=True, path=true_policy_path)
         graph_policy.load(graph_policy_path)
+        print('Loaded policies!')
 
     env.set_confused(None)
     eval_path = 'results/{}'.format(task) + '/eval_{}_{}_{}.csv'
@@ -63,7 +69,7 @@ def main(task, train):
     total_correct = eval_policy(policy_correct, env)
     total_confused = eval_policy(policy_confused, env)
 
-    print('Confused policy: {}'.formawweqwezxt(total_confused))
+    print('Confused policy: {}'.format(total_confused))
     print('Correct policy: {}'.format(total_correct))
 
     # Evaluate ReCCoVER on the confused policy

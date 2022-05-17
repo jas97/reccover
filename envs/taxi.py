@@ -41,7 +41,7 @@ class TaxiEnv(gym.Env):
 
         self.observation_space = spaces.Box(low=self.low,
                                             high=self.high,
-                                            shape=(self.state_dim,), dtype=np.uint8)
+                                            shape=(self.state_dim,), dtype=np.int32)
 
         self.timesteps = 0
         self.alt = alt
