@@ -5,7 +5,7 @@ Code accompanying our paper [ReCCoVER: Detecting Causal Confusion for Explainabl
 
 ## Installation 
 
-Necessary packages are listed in the requirements file: 
+Necessary packages can be installed directly from the requirements.txt file:
 
 ```{bash}
 pip install -r requirements.txt
